@@ -19,6 +19,25 @@ function setValue(val, id) {
 
 var toCalculate = "capacitance";
 $(document).ready(function() {
+	var calculate = function() {
+		var result = new Big(1);
+		if (toCalculate == "frequency") {
+			// 1 / (2 * pi * sqrt(inductance * capacitance))
+			var l_c = new Big(getValue("inductance")).mul(getValue("capacitance")).sqrt();
+			var denom = new Big(2).mul(Math.PI).mul(l_c);
+			result = result.div(denom);
+		} else if (toCalculate == "inductance") {
+			// 1 / (4 * pi^2 * frequency^2 * capacitance)
+			var denom = new Big(4).mul(Math.PI).mul(Math.PI).mul(getValue("frequency")).mul(getValue("frequency")).mul(getValue("capacitance"));
+			result = result.div(denom);
+		} else if (toCalculate == "capacitance") {
+			// 1 / (4 * pi^2 * frequency^2 * inductance)
+			var denom = new Big(4).mul(Math.PI).mul(Math.PI).mul(getValue("frequency")).mul(getValue("frequency")).mul(getValue("inductance"));
+			result = result.div(denom);
+		}
+		setValue(result, toCalculate);
+	};
+
 	$(".field select").each(function() {
 		$(this).data("old-value", $(this).val());
 	});
@@ -37,24 +56,8 @@ $(document).ready(function() {
 		toCalculate = $(this).attr("data-field");
 	});
 
-	$(".field input").change(function() {
-		var result = new Big(1);
-		if (toCalculate == "frequency") {
-			// 1 / (2 * pi * sqrt(inductance * capacitance))
-			var l_c = new Big(getValue("inductance")).mul(getValue("capacitance")).sqrt();
-			var denom = new Big(2).mul(Math.PI).mul(l_c);
-			result = result.div(denom);
-		} else if (toCalculate == "inductance") {
-			// 1 / (4 * pi^2 * frequency^2 * capacitance)
-			var denom = new Big(4).mul(Math.PI).mul(Math.PI).mul(getValue("frequency")).mul(getValue("frequency")).mul(getValue("capacitance"));
-			result = result.div(denom);
-		} else if (toCalculate == "capacitance") {
-			// 1 / (4 * pi^2 * frequency^2 * inductance)
-			var denom = new Big(4).mul(Math.PI).mul(Math.PI).mul(getValue("frequency")).mul(getValue("frequency")).mul(getValue("inductance"));
-			result = result.div(denom);
-		}
-		setValue(result, toCalculate);
-	});
+	$(".field input").change(calculate);
+	$(".field input").keyup(calculate);
 
 	$(".field select").change(function(e) {
 		var fieldToSet = $(e.target).attr("id").split("-")[0];
