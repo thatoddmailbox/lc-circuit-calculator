@@ -14,19 +14,19 @@ html, body {
 	text-align: right;
 }
 .field input {
-	width: 100px;
+	width: 120px;
 	position: absolute;
 	left: 120px;
 }
 .field select {
 	position: absolute;
 	top: 1px;
-	left: 230px;
+	left: 250px;
 	width: 180px;
 }
 .field button {
 	position: absolute;
-	left: 420px;
+	left: 440px;
 }
 input, select, button {
 	font-family: "Source Sans Pro", sans-serif;
