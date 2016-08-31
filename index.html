@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>LC Circuit Calculator</title>
+
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="js/big.min.js"></script>
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<h1>LC Circuit Calculator</h1>
+		<div class="field">
+			<span class="field-label">Frequency: </span>
+			<input type="number" id="frequency" value="125">
+			<select id="frequency-unit">
+				<option value="1">Hertz (Hz)</option>
+				<option value="1000" selected>Kilohertz (KHz)</option>
+				<option value="1000000">Megahertz (MHz)</option>
+				<option value="1000000000">Gigahertz (GHz)</option>
+			</select>
+			<button class="select-field" data-field="frequency">&laquo; Calculate</button>
+		</div>
+		<div class="field">
+			<span class="field-label">Inductance: </span>
+			<input type="number" id="inductance" value="1.62">
+			<select id="inductance-unit">
+				<option value="1">Henry (H)</option>
+				<option value="0.001" selected>Millihenry (mH)</option>
+				<option value="0.000001">Microhenry (&#x03BC;H)</option>
+				<option value="0.000000001">Nanohenry (nH)</option>
+				<option value="0.000000000001">Picohenry (pH)</option>
+			</select>
+			<button class="select-field" data-field="inductance">&laquo; Calculate</button>
+		</div>
+		<div class="field">
+			<span class="field-label">Capacitance: </span>
+			<input type="number" id="capacitance" value="1000.7" disabled>
+			<select id="capacitance-unit">
+				<option value="1">Farad (F)</option>
+				<option value="0.001">Millifarad (mF)</option>
+				<option value="0.000001">Microfarad (&#x03BC;F)</option>
+				<option value="0.000000001">Nanofarad (nF)</option>
+				<option value="0.000000000001" selected>Picofarad (pF)</option>
+			</select>
+			<button class="select-field" data-field="capacitance" disabled>Calculating</button>
+		</div>
+	</body>
+</html>
