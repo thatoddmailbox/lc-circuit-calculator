@@ -3,6 +3,8 @@
 	<head>
 		<title>LC Circuit Calculator</title>
 
+		<link rel="stylesheet" href="css/style.css" />
+
 		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 		<script src="js/big.min.js"></script>
 		<script src="js/main.js"></script>
@@ -10,7 +12,7 @@
 	<body>
 		<h1>LC Circuit Calculator</h1>
 		<div class="field">
-			<span class="field-label">Frequency: </span>
+			<span class="field-label">Frequency</span>
 			<input type="number" id="frequency" value="125">
 			<select id="frequency-unit">
 				<option value="1">Hertz (Hz)</option>
@@ -21,7 +23,7 @@
 			<button class="select-field" data-field="frequency">&laquo; Calculate</button>
 		</div>
 		<div class="field">
-			<span class="field-label">Inductance: </span>
+			<span class="field-label">Inductance</span>
 			<input type="number" id="inductance" value="1.62">
 			<select id="inductance-unit">
 				<option value="1">Henry (H)</option>
@@ -33,7 +35,7 @@
 			<button class="select-field" data-field="inductance">&laquo; Calculate</button>
 		</div>
 		<div class="field">
-			<span class="field-label">Capacitance: </span>
+			<span class="field-label">Capacitance</span>
 			<input type="number" id="capacitance" value="1000.7" disabled>
 			<select id="capacitance-unit">
 				<option value="1">Farad (F)</option>
